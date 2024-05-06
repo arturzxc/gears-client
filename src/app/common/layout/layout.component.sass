@@ -1,0 +1,45 @@
+.sidenav-container
+  height: 100%
+
+.sidenav
+  width: 200px
+  & .mat-drawer-inner-container
+    background: red
+  & .mat-toolbar
+    background: inherit
+    margin-top: 20px
+    margin-bottom: 8px
+    justify-content: center
+    display: flex
+
+.mat-toolbar.mat-primary
+  position: sticky
+  top: 0
+  z-index: 1
+
+app-logo
+  height: 100%
+  background: white
+  padding: 0 1rem
+  margin: 0 1rem
+
+#content
+  display: flex
+  flex-direction: column
+  flex-wrap: nowrap
+  align-items: baseline
+  padding: 2rem
+  min-height: 100vh
+  &.mobile
+    padding: 1rem
+
+#footer
+  display: flex
+  flex-wrap: nowrap
+  min-height: 100vh
+  background: lightgray
+  padding: 2rem
+  justify-content: center
+  color: #06060657
+  &.mobile
+    padding: 1rem
