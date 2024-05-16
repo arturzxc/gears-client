@@ -12,7 +12,7 @@ import { LogoComponent } from '../common/logo/logo.component';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-accounts',
   standalone: true,
   imports: [
     MatCardModule,
@@ -26,10 +26,9 @@ import { RouterLink } from '@angular/router';
     LogoComponent,
     RouterLink,
   ],
-  providers: [provideNativeDateAdapter()],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.sass'
+  templateUrl: './accounts.component.html',
+  styleUrl: './accounts.component.sass'
 })
-export class DashboardComponent {
+export class AccountsComponent {
 
 }

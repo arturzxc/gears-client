@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$my-typography: mat.define-typography-config(
+  $font-family: "Chakra Petch",
+);
+@include mat.typography-hierarchy($my-typography);
+
+$primary-palette: mat.define-palette(mat.$gray-palette);
+$accent-palette: mat.define-palette(mat.$deep-orange-palette);
+$color: (
+  primary:$primary-palette,
+  accent: $accent-palette
+);
+
+//dark
+$dark-theme: mat.define-dark-theme((color: $color, typography: $my-typography ));
+@include mat.core-theme($dark-theme);
+@include mat.all-component-themes($dark-theme);
+
+//light
+@media (prefers-color-scheme: light) {
+  $light-theme: mat.define-light-theme((color: $color ));
+  @include mat.all-component-colors($light-theme);
+}

@@ -15,9 +15,16 @@
         <a mat-list-item [routerLink]="['dashboard']">Dashboard</a>
         <a mat-list-item [routerLink]="['dashboard']">Dashboard</a>
       </mat-nav-list>
-      <button mat-stroked-button color="warn" [routerLink]="['/logout']">
-        <mat-icon>logout</mat-icon>Logout
-      </button>
+      <span style="
+          flex: 1;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          padding: 1rem;">
+        <button mat-stroked-button color="accent" [routerLink]="['/logout']">
+          <mat-icon>logout</mat-icon>Logout
+        </button>
+      </span>
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -30,11 +37,11 @@
               (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <app-logo />
       }
+      <ng-content select="[title]"></ng-content>
     </mat-toolbar>
     <div id="content" [class]="(isHandset$ | async) ? 'mobile' : ''">
-      <ng-content></ng-content>
+      <ng-content select="[body]"></ng-content>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,0 +1,11 @@
+@use '@angular/material' as mat
+@use '../../../../src/theme.scss' as my
+@use "sass:map"
+#svg_1,#svg_19
+    fill:  map.get(my.$primary-palette,500) !important
+    font-family: map.get(my.$my-typography,'font-family')
+    font-weight: 100
+#svg_30,#svg_41,#svg_43
+    fill:  map.get(my.$accent-palette,A400) !important
+    font-family: map.get(my.$my-typography,'font-family')
+    font-weight: 900
