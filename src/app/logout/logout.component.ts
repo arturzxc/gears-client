@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,21 +21,26 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './logout.component.sass',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LogoutComponent {
-  secondsLeft: number = 5;
+export class LogoutComponent implements OnDestroy {
+  secondsLeft: number = 120;
+  interval: any;
 
   constructor(
     private router: Router,
     private cdf: ChangeDetectorRef,
   ) {
-    let interval = setInterval(() => {
+    this.interval = setInterval(() => {
       if (this.secondsLeft > 0)
         this.secondsLeft--;
       this.cdf.detectChanges();
       if (this.secondsLeft == 0) {
         this.router.navigate(['/login']);
-        clearInterval(interval);
+        clearInterval(this.interval);
       }
     }, 1000);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.interval);
   }
 }

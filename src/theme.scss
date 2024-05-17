@@ -1,25 +1,59 @@
 @use '@angular/material' as mat;
-@include mat.core();
 
-$my-typography: mat.define-typography-config(
-  $font-family: "Chakra Petch",
+$palette: (
+  50: #e0f3ee,
+  100: #b5e2d3,
+  200: #85d0b6,
+  300: #55bd9a,
+  400: #32ae86,
+  500: #209e75,
+  600: #1c9169,
+  700: #17815a,
+  800: #10714d,
+  900: #095433,
+
+  A50: #f6f1e3,
+  A100: #ebdbb9,
+  A200: #dfc58d,
+  A300: #d4af63,
+  A400: #c5913c,
+  A500: #c5913c,
+  A600: #c18837,
+  A700: #ba7b31,
+  A800: #b26f2d,
+  A900: #a45d29,
+
+  contrast: ( //contrast
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(white, 0.87),
+    700: rgba(white, 0.87),
+    800: rgba(white, 0.87),
+    900: rgba(white, 0.87))
 );
-@include mat.typography-hierarchy($my-typography);
 
-$primary-palette: mat.define-palette(mat.$gray-palette);
-$accent-palette: mat.define-palette(mat.$deep-orange-palette);
+$paletteDef: mat.define-palette($palette);
 $color: (
-  primary:$primary-palette,
-  accent: $accent-palette
+  primary:$paletteDef,
+  accent: $paletteDef
 );
+$font-family: "Chakra Petch";
+$typography: mat.define-typography-config($font-family: $font-family);
+$theme: (
+  color: $color,
+  typography: $typography
+);
+$darkThemeDef: mat.define-dark-theme($theme);
+$lightThemeDef: mat.define-light-theme($theme);
 
-//dark
-$dark-theme: mat.define-dark-theme((color: $color, typography: $my-typography ));
-@include mat.core-theme($dark-theme);
-@include mat.all-component-themes($dark-theme);
-
-//light
+//apply all
+@include mat.core();
+@include mat.typography-hierarchy($typography);
+@include mat.all-component-themes($darkThemeDef);
 @media (prefers-color-scheme: light) {
-  $light-theme: mat.define-light-theme((color: $color ));
-  @include mat.all-component-colors($light-theme);
+  @include mat.all-component-colors($lightThemeDef);
 }
