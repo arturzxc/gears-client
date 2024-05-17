@@ -1,7 +1,11 @@
 <mat-card id="container">
-    <div id="inner">
-        <app-logo />
-        <h1>You have been logged out!</h1>
-        <button mat-stroked-button color="primary" [routerLink]="['/login']">Back to login</button>
-    </div>
+  <div id="inner">
+    <app-logo />
+    <h1>You have been logged out!</h1>
+    <p>You will be redirected to the login page in
+      <span style="font-family:math !important; font-weight: bold; ">{{secondsLeft}}</span>
+      second(s)
+    </p>
+    <button mat-raised-button color="primary" [routerLink]="['/login']">Back to login</button>
+  </div>
 </mat-card>
